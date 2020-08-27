@@ -1,29 +1,25 @@
-name: CI
+name: End-to-end tests
 on:
   push:
     branches:
       - master
-
+  pull_request:
+    branches:
+      - master
 jobs:
-  main:
-    runs-on: ubuntu-latest
+  cypress-run:
+    runs-on: ubuntu-16.04
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-      with:
-        persist-credentials: false
-        
-    # react项目为npm run-script build，vue项目改为npm run build
-    - name: Install and Build
-      run: |
-        npm install
-        npm run generate
-        npm run start
-     
-    # react项目的FOLDER为build，vue项目改为dist   
-    - name: Deploy
-      uses: JamesIves/github-pages-deploy-action@releases/v3
-      with:
-        ACCESS_TOKEN: ${{ secrets.AUTO_DEPLOY }}
-        BRANCH: gh-pages
-        FOLDER: dist
+      - name: Checkout
+        uses: actions/checkout@v1
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          browser: chrome
+          headless: true
+          build: npm run generate
+          start: npm run start
+          # quote the url to be safe against YML parsing surprises
+          wait-on: 'http://localhost:3000'
