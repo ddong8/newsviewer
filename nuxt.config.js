@@ -9,7 +9,7 @@ export default {
   },
   target: 'static',
   router: {
-    base: '../../'
+    base: '/newsviewer/'
   },
   /*
   ** Headers of the page
