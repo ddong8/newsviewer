@@ -16,4 +16,4 @@ jobs:
         ACCESS_TOKEN: ${{ secrets.AUTO_DEPLOY }}
         BRANCH: gh-pages
         FOLDER: dist
-        BUILD_SCRIPT: npm install && npm run generate && npm run start
+        BUILD_SCRIPT: npm install && npm run generate
