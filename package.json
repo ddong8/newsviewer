@@ -16,5 +16,7 @@
     "element-ui": "^2.4.11",
     "nuxt": "^2.0.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@nuxtjs/tailwindcss": "^3.0.2"
+  }
 }
