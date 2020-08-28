@@ -8,6 +8,9 @@ export default {
     host: '0.0.0.0' // default: localhost
   },
   target: 'static',
+  router: {
+    base: '../'
+  },
   /*
   ** Headers of the page
   */
