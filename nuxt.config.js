@@ -42,8 +42,18 @@ export default {
   ** Nuxt.js dev-modules
   */
   buildModules: [
-    '@nuxtjs/tailwindcss'
+    // Doc: https://github.com/nuxt-community/color-mode-module
+    "@nuxtjs/color-mode",
+    // Doc: https://github.com/nuxt-community/tailwindcss-module
+    "@nuxtjs/tailwindcss"
   ],
+  tailwindcss: {
+    // add '~tailwind.config` alias
+    exposeConfig: false
+  },
+  purgeCSS: {
+    whitelist: ["dark-mode"]
+  },
   /*
   ** Nuxt.js modules
   */
@@ -76,7 +86,7 @@ export default {
     /*
     ** You can extend webpack config here
     */
-    extend (config, ctx) {
+    extend(config, ctx) {
     }
   }
 }
